@@ -1,0 +1,65 @@
+
+aprsWsprBridge_notes.txt   - 2020-03-02
+
+#==============================================================================================================#
+#                                                                                                              #
+# Copyright (C) 2019 Graham Collins ve3gtc                                                                     #
+#                                                                                                              #
+# This program is free software; you can redistribute it and/or modify                                         #
+# it under the terms of the GNU General Public License as published by                                         #
+# the Free Software Foundation; either version 2 of the License, or                                            #
+# (at your option) any later version.                                                                          #
+#                                                                                                              #
+#  http://www.gnu.org/licenses/gpl-3.0.html                                                                    #
+#                                                                                                              #
+# This program is distributed in the hope that it will be useful,                                              #
+# but WITHOUT ANY WARRANTY; without even the implied warranty of                                               #
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the                                                #
+# GNU General Public License for more details.                                                                 #
+#                                                                                                              #
+# You should have received a copy of the GNU General Public License along                                      #
+# with this program; if not, write to the Free Software Foundation, Inc.,                                      #
+# 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.                                                  #
+#                                                                                                              #
+#==============================================================================================================#
+# if not already installled, use pip to install the following
+#
+#    pip install beautifulsoup
+#    pip install bs4
+#    pip install lxml
+#    pip install pandas
+#    pip install requests
+
+aprsWsprBridge.py is the main script and has been tested only on Python 3 and Windows but should be OK Linux with few if any changes.
+
+Requires aprsUtilities.py, getLastAprsPositonTime.py and getWspr.py
+
+You will need a aprs api key form aprs.fi getting one is simple, just create an account aprs.fi if you already do not have one.
+
+You will find your aprs api key under your account details
+
+see: https://aprs.fi/page/api you will need to create and account and you will find your key here: https://aprs.fi/account/
+
+aprsWsprBridge.py is the only file you should need to edit.
+
+Specifically in these place near the top of the file:
+
+strUserCallSign = 'your callsign - the one who will be uploading the spot to APRS and has created and account on aprs.fi and has an aprs api key'
+
+aprsApiKey = 'your aprs api key see: https://aprs.fi/page/api you will need to create and account and you will find your key here: https://aprs.fi/account/'
+
+strWsprCallSign = 'callsign of the wspr target i.e. W1XXX'
+
+strBalloonCallSign = 'callsign you want your balloon to appear as on APRS i.e. W1XXX-12'
+
+Place all of these files in the same folder, for example c:\apps\aprsWsprBridge\
+
+The script will create two log files in this folder when it runs, one a general run time log and the other will contain a log of any wspr spot it
+collects and uses to upload a position to aprs.fi.
+
+You will need to set up a scheduled task to run aprsWsprBridge.py
+
+I suggest no more frequently than once every 15 minutes and on and odd minut and seconds i.e. 00:03:17 or whatever. This gets away from the peak
+wspr upload times on the even minutes.
+
+Good luck.
