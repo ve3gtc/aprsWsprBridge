@@ -29,6 +29,17 @@ aprsWsprBridge_notes.txt   - 2020-03-02
 #    pip install lxml
 #    pip install pandas
 #    pip install requests
+#
+#==============================================================================================================#
+#
+#  2020-05-06 - changed time.mktime to calendar.timegm in line:
+#                wsprSpotTimeStamp = int( calendar.timegm( wsprSpotDateTime.timetuple() ) )
+#             - this was a bug reported by Bob ZL1RS which identified a problem with local time vs UTC time
+#               conversion.
+#
+#==============================================================================================================#
+
+
 
 aprsWsprBridge.py is the main script and has been tested only on Python 3 and Windows but should be OK Linux with few if any changes.
 

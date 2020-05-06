@@ -32,12 +32,20 @@
 #    pip install requests
 #
 #==============================================================================================================#
+#
+#  2020-05-06 - changed time.mktime to calendar.timegm in line:
+#                wsprSpotTimeStamp = int( calendar.timegm( wsprSpotDateTime.timetuple() ) )
+#             - this was a bug reported by Bob ZL1RS which identified a problem with local time vs UTC time 
+#               conversion.
+#
+#==============================================================================================================#
 
 import sys
 import traceback
 import string
 import datetime
 import time
+import calendar
 
 from aprsUtilities import *
 from getWspr import *
@@ -78,7 +86,7 @@ if wsprSpot == 1 :                                   # some sort of exception oc
 
 lastAprsPositionTimeStamp = int( getLastAprsPositionTime ( strBalloonCallSign, aprsApiKey ) )
 
-print ( lastAprsPositionTimeStamp )
+# print ( lastAprsPositionTimeStamp )
 
 wsprSpotDetails = wsprSpot.split()
 
@@ -86,7 +94,7 @@ wsprDateTime = wsprSpotDetails[0] + ' ' + wsprSpotDetails[1]
 
 wsprSpotDateTime = datetime.datetime.strptime( wsprDateTime, '%Y-%m-%d %H:%M' )
 
-wsprSpotTimeStamp = int( time.mktime( wsprSpotDateTime.timetuple() ) )
+wsprSpotTimeStamp = int( calendar.timegm( wsprSpotDateTime.timetuple() ) )
 
 with open( "log.txt", "a" ) as log_file:
 	log_file.write( time.ctime() + " : last APRS postion timestamp %s\n" % lastAprsPositionTimeStamp )

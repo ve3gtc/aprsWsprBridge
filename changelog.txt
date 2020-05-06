@@ -1,0 +1,8 @@
+#==============================================================================================================#
+#
+#  2020-05-06 - changed time.mktime to calendar.timegm in line:
+#                wsprSpotTimeStamp = int( calendar.timegm( wsprSpotDateTime.timetuple() ) )
+#             - this was a bug reported by Bob ZL1RS which identified a problem with local time vs UTC time 
+#               conversion.
+#
+#==============================================================================================================#
