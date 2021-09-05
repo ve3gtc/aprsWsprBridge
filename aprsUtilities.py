@@ -86,25 +86,25 @@ def passCode(pcStrCallsign):
 
 #==============================================================================================================#
 #                                                                                                              #
-# - AprsSendPacket(aspStrCallSign, aspStrAprsMessage)                                                 #
+# - AprsSendPacket(aspStrCallSign, aspStrAprsMessage)                                                          #
 #                                                                                                              #
-# - aspStrCallSign is the callsign of WHO is posting the spot, NOT the callsign of the ballaoon                #
+# - aspStrCallSign is the callsign of WHO is posting the spot, NOT the callsign of the balloon                 #
 # - the callsign of balloon is in aspStrAprsMessage                                                            #
 #                                                                                                              #
-# - sends data to aprs.fi                                                                                      #
+# - sends data to the APRS network North American servers at noam.aprs2.net                                    #
 #                                                                                                              #
-# - http://www.aprs-is.net                                                                                     #
+# - For other servers (Europe, Asia, etc.) please see http://www.aprs2.net                                     #
 #                                                                                                              #
 #==============================================================================================================#
 """
-function to upload a data packet to aprs.fi netowrk
+function to upload a data packet to APRS network
 """
 #def AprsSendPacket(aspStrCallSign, apsStrAprsMessage):
 
 def AprsSendPacket(aspStrUserCallsign, aspStrBalloonCAllSign, aspStrLatitude, aspStrLongitude, aspStrIcon, aspStrData):
 
-	serverHost = 'second.aprs.net'
-	serverPort = 10152
+	serverHost = 'noam.aprs2.net'
+	serverPort = 14580
 
 	#==============================================================================================================#
 	#                                                                                                              #
